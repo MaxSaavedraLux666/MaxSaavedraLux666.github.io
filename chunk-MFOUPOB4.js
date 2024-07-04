@@ -1,0 +1,1 @@
+import{Bb as r,Ib as l,ob as o,pa as n,pb as i}from"./chunk-JSW376PB.js";var d=(()=>{let e=class e{};e.\u0275fac=function(a){return new(a||e)},e.\u0275cmp=n({type:e,selectors:[["app-video-call-page"]],standalone:!0,features:[l],decls:2,vars:0,template:function(a,s){a&1&&(o(0,"p"),r(1,"video-call-page works!"),i())}});let t=e;return t})();export{d as default};
