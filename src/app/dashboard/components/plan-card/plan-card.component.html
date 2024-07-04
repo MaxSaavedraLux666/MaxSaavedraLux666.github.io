@@ -1,0 +1,29 @@
+<div
+  class="flex flex-col space-y-4 bg-white rounded-xl border-solid border border-gray-200 shadow-md p-10"
+>
+  <div class="flex flex-col items-start space-y-4 border-solid border-b pb-4">
+    <span class="font-semibold text-indigo-500 text-base">
+      {{ planCardItems().title }}
+    </span>
+    <div class="flex flex-row items-end">
+      <span class="font-bold text-4xl">S/.{{ planCardItems().price }}</span>
+      <span class="text-gray-500">/año</span>
+    </div>
+    <span class="text-gray-500">
+      {{ planCardItems().description }}
+    </span>
+  </div>
+  <div class="flex flex-col space-y-4 text-gray-500">
+    @for (item of planCardItems().features; track $index) {
+    <span>{{ item }}</span>
+    }
+  </div>
+  <div class="flex flex-col items-center">
+    <button
+      class="mt-32 w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded transition-colors duration-150"
+      routerLink="/error"
+    >
+      Elegir {{ planCardItems().title }}
+    </button>
+  </div>
+</div>

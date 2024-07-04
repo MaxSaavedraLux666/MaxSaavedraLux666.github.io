@@ -1,0 +1,15 @@
+<div class="w-full h-full p-10 flex flex-col items-center space-y-2 bg-white">
+  <span class="font-semibold text-indigo-500 text-base">Nuestro blog</span>
+  <span class="font-bold text-4xl">Curiosidades</span>
+  <span class="text-gray-500">
+    Aquí tienes algunas curiosidades interesantes sobre el inglés que podrían
+    ser útiles para ti
+  </span>
+  <div class="h-full flex flex-col justify-center">
+    <div class="flex flex-row space-x-4">
+      @for (item of blogCardItems(); track $index) {
+      <dashboard-blog-card [blogCardItems]="item"></dashboard-blog-card>
+      }
+    </div>
+  </div>
+</div>

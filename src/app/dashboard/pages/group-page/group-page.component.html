@@ -1,0 +1,89 @@
+<div class="w-full h-full flex flex-row justify-between">
+  @if (isCallCreated()) {
+  <dashboard-video-call-card
+    (isLeaveCall)="leaveCall($event)"
+  ></dashboard-video-call-card>
+  } @else {
+  <div class="w-full h-full flex flex-col items-center justify-center">
+    <div class="flex flex-row items-center space-x-4">
+      <div>
+        <button
+          (click)="onCallCreate()"
+          [disabled]="isLoading()"
+          type="button"
+          class="w-full flex flex-row items-center space-x-2 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg transition-colors duration-150"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+            stroke="currentColor"
+            fill="currentColor"
+            class="size-4"
+          >
+            <path
+              d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM232 344V280H168c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H280v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+            />
+          </svg>
+          <span class="font-semibold">Reunión nueva</span>
+        </button>
+      </div>
+      <form
+        [formGroup]="form"
+        autocomplete="off"
+        (ngSubmit)="onCallJoin()"
+        class="flex flex-row items-center space-x-4"
+      >
+        <div>
+          <coral-input
+            inputPlaceholder="Ingresa un código"
+            inputClass="bg-white"
+            formControlName="callId"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 576 512"
+              stroke="currentColor"
+              fill="currentColor"
+              class="size-4 text-gray-500"
+            >
+              <path
+                d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm16 64h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM64 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V240zm16 80h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V336c0-8.8 7.2-16 16-16zm80-176c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V144zm16 80h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V240c0-8.8 7.2-16 16-16zM160 336c0-8.8 7.2-16 16-16H400c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H176c-8.8 0-16-7.2-16-16V336zM272 128h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM256 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V240zM368 128h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM352 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16V240zM464 128h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H464c-8.8 0-16-7.2-16-16V144c0-8.8 7.2-16 16-16zM448 240c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H464c-8.8 0-16-7.2-16-16V240zm16 80h32c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16H464c-8.8 0-16-7.2-16-16V336c0-8.8 7.2-16 16-16z"
+              />
+            </svg>
+          </coral-input>
+        </div>
+        <div>
+          <button
+            type="submit"
+            [disabled]="isLoading()"
+            class="w-full flex flex-row items-center space-x-2 text-white bg-transparent border-0 py-2 px-4 focus:outline-none hover:bg-indigo-100 rounded text-lg transition-colors duration-150"
+          >
+            @if (isLoading()) {
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+              stroke="currentColor"
+              fill="currentColor"
+              class="size-4 text-indigo-500 animate-spin"
+            >
+              <path
+                d="M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z"
+              />
+            </svg>
+            <span class="text-indigo-500 font-semibold">Cargando</span>
+            } @else {
+            <span class="text-indigo-500 font-semibold">Unirse</span>
+            }
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  }
+  <div style="max-width: 30rem">
+    <dashboard-search-card
+      [chatItems]="getChatItems()"
+      isVideoCall
+    ></dashboard-search-card>
+  </div>
+</div>

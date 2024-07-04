@@ -1,0 +1,21 @@
+<div
+  class="relative w-full flex flex-col items-center justify-center bg-no-repeat bg-center my-6"
+  [style]="{ height: !isCameraOn() ? '25rem' : '' }"
+  #videoCallElement
+>
+  @if (!isCameraOn()) {
+  <div
+    class="w-full absolute flex flex-col items-center z-99 top-0 bottom-0 bg-indigo-500"
+    style="height: 25rem"
+  >
+    <div
+      class="bg-cover bg-top bg-no-repeat rounded-lg"
+      style="
+        width: 25rem;
+        height: 25rem;
+        background-image: url('https://i.ibb.co/bLcpXrR/32a0d2d2-1-Photoroom.png');
+      "
+    ></div>
+  </div>
+  }
+</div>

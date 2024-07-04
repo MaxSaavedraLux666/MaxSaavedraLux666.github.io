@@ -1,0 +1,45 @@
+<header class="text-gray-600 body-font">
+  <div
+    class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+  >
+    <a
+      class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0"
+    >
+      <span class="ml-3 mr-32 text-4xl font-bold">Coral Talk</span>
+    </a>
+    <nav
+      class="md:mr-auto md:ml-4 md:py-1 md:pl-4 flex flex-wrap items-center text-base justify-center font-semibold"
+    >
+      <a
+        class="text-lg mr-10 hover:text-gray-900 transition-colors duration-150"
+        >Home</a
+      >
+      <a
+        class="text-lg mr-10 hover:text-gray-900 transition-colors duration-150"
+        >Chat</a
+      >
+      <a
+        class="text-lg mr-10 hover:text-gray-900 transition-colors duration-150"
+        >Video Call</a
+      >
+    </nav>
+    <div class="flex space-x-4">
+      <button
+        class="inline-flex items-center bg-gray-400 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-base mt-4 md:mt-0 transition-colors duration-150"
+      >
+        <span
+          (click)="navigateTo('auth/login')"
+          class="font-semibold text-black text-lg"
+          >Login</span
+        >
+      </button>
+
+      <button
+        (click)="navigateTo('auth/register')"
+        class="inline-flex items-center bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-base mt-4 md:mt-0 transition-colors duration-150"
+      >
+        <span class="font-semibold text-white text-lg">Sign up</span>
+      </button>
+    </div>
+  </div>
+</header>

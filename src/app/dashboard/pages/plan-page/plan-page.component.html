@@ -1,0 +1,14 @@
+<div class="w-full h-full p-10 flex flex-col items-center space-y-2 bg-white">
+  <span class="font-semibold text-indigo-500 text-base">Tabla de Precios</span>
+  <span class="font-bold text-4xl">Nuestros Planes</span>
+  <span class="text-gray-500">
+    Elige el mejor plan para mejorar tu inglés de forma fiable.
+  </span>
+  <div class="h-full flex flex-col justify-center">
+    <div class="flex flex-row space-x-4">
+      @for (item of planCardItems(); track $index) {
+      <dashboard-plan-card [planCardItems]="item"></dashboard-plan-card>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,107 @@
+<header
+  class="text-gray-600 bg-white body-font"
+  [class]="entered() ? 'shadow-md' : ''"
+>
+  <div
+    class="container mx-auto flex items-center justify-between flex-wrap p-5 flex-col md:flex-row"
+  >
+    <a
+      class="flex items-center title-font font-medium text-gray-900 mb-4 md:mb-0"
+    >
+      <div
+        class="w-10 h-10 bg-cover bg-center rounded-full mr-2"
+        style="
+          background-image: url('https://i.ibb.co/bLcpXrR/32a0d2d2-1-Photoroom.png');
+        "
+      ></div>
+      <span class="text-4xl font-bold">Coral Talk</span>
+      @if (entered()) {
+      <svg
+        (click)="toggleSideBar()"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 448 512"
+        stroke="currentColor"
+        fill="currentColor"
+        class="ml-10 size-6 cursor-pointer"
+      >
+        <path
+          d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+        />
+      </svg>
+      }
+    </a>
+    <nav class="flex flex-wrap space-x-10 text-base font-semibold">
+      <a
+        class="text-lg hover:text-gray-900 transition-colors duration-150"
+        routerLinkActive="text-gray-900"
+        [routerLink]="[entered() ? '/dashboard/home' : '/auth/login']"
+        >Inicio</a
+      >
+      <a
+        class="text-lg hover:text-gray-900 transition-colors duration-150"
+        [routerLink]="[entered() ? '/dashboard/plan' : '/auth/login']"
+        routerLinkActive="text-gray-900"
+        >{{ entered() ? "Planes" : "Chat" }}</a
+      >
+      <a
+        class="text-lg hover:text-gray-900 transition-colors duration-150"
+        [routerLink]="[entered() ? '/dashboard/blog' : '/auth/login']"
+        routerLinkActive="text-gray-900"
+        >{{ entered() ? "Blogs" : "Video Llamada" }}</a
+      >
+    </nav>
+    <div class="flex space-x-4">
+      @if (entered()) {
+      <div
+        (click)="navigateTo('dashboard/profile')"
+        class="flex flex-row items-center space-x-4 cursor-pointer"
+      >
+        <div class="flex flex-col items-end">
+          <div class="relative flex flex-col items-end">
+            <div
+              class="animate-ping flex flex-col items-end bg-red-500 p-0.5 rounded-full"
+            ></div>
+            <span class="absolute bg-red-500 p-0.5 rounded-full"></span>
+          </div>
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 448 512"
+            stroke="currentColor"
+            fill="currentColor"
+            class="size-4"
+          >
+            <path
+              d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v25.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm0 96c61.9 0 112 50.1 112 112v25.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V208c0-61.9 50.1-112 112-112zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"
+            />
+          </svg>
+        </div>
+        <span class="font-semibold text-black text-lg">Federico Silva</span>
+        <div
+          class="w-6 h-6 bg-cover bg-center rounded-full"
+          style="
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/John_Doe%2C_born_John_Nommensen_Duchac.jpg/1200px-John_Doe%2C_born_John_Nommensen_Duchac.jpg');
+          "
+        ></div>
+      </div>
+      } @else {
+      <button
+        class="inline-flex items-center bg-gray-400 border-0 py-2 px-6 focus:outline-none hover:bg-gray-500 rounded text-base mt-4 md:mt-0 transition-colors duration-150"
+      >
+        <span
+          (click)="navigateTo('auth/login')"
+          class="font-semibold text-black text-lg"
+          >Iniciar Sesión</span
+        >
+      </button>
+
+      <button
+        (click)="navigateTo('auth/register')"
+        class="inline-flex items-center bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-base mt-4 md:mt-0 transition-colors duration-150"
+      >
+        <span class="font-semibold text-white text-lg">Registrarse</span>
+      </button>
+      }
+    </div>
+  </div>
+</header>

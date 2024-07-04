@@ -1,0 +1,42 @@
+name: coral-talk-deploy
+
+# This workflow is triggered on push events to the main branch
+on:
+  push:
+    branches:
+      - main
+
+# This job will run on the latest version of Ubuntu
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    # Steps to be executed
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.14.0"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build:prod
+
+      # Route file renaming for GitHub Pages (in all Versions of Angular)
+      - name: Rename route file
+        run: mv dist/coral-talk-frontend/browser/index.html dist/coral-talk-frontend/browser/404.html
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: crazy-max/ghaction-github-pages@v4
+        with:
+          target_branch: gh-pages
+          build_dir: dist/coral-talk-frontend/browser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

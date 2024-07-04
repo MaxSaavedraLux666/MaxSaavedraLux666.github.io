@@ -1,0 +1,12 @@
+<div class="h-screen w-full fixed top-0 left-0 bg-gray-200 overflow-y-auto">
+  <nav-bar
+    class="sticky top-0 z-20"
+    (sideBarToggled)="sideBarToggled($event)"
+    entered
+  ></nav-bar>
+  <div class="navigation-content flex flex-row">
+    <side-bar [sideBarVisible]="sideBarVisible()" class="flex-none"></side-bar>
+    <!-- <div>hola</div> -->
+    <router-outlet class="z-10"></router-outlet>
+  </div>
+</div>
